@@ -1,0 +1,10 @@
+{% extends 'contact/base.html' %}
+{% block title %}Thank you{% endblock %}
+
+{% block content %}
+<div class="alert alert-success">
+  <h4 class="alert-heading">Thanks {{ name|default:"friend" }}!</h4>
+  <p>Your message was submitted {% if saved %}and stored successfully.{% else %} — we received it (manual flow).{% endif %}</p>
+  <a class="btn btn-outline-primary" href="{% url 'contact:manual' %}">Send another</a>
+</div>
+{% endblock %}

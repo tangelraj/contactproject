@@ -1,0 +1,36 @@
+{% extends 'contact/base.html' %}
+{% block title %}Contact (Manual){% endblock %}
+
+{% block content %}
+<h2>Contact Us (manual validation)</h2>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input name="name" class="form-control" value="{{ data.name }}">
+    {% if errors.name %}
+      <div class="text-danger mt-1">{{ errors.name }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input name="email" class="form-control" value="{{ data.email }}">
+    {% if errors.email %}
+      <div class="text-danger mt-1">{{ errors.email }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea name="message" class="form-control" rows="5">{{ data.message }}</textarea>
+    {% if errors.message %}
+      <div class="text-danger mt-1">{{ errors.message }}</div>
+    {% endif %}
+  </div>
+
+  <button class="btn btn-primary">Send (manual)</button>
+</form>
+{% endblock %}

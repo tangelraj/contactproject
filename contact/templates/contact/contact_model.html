@@ -1,0 +1,14 @@
+{% extends 'contact/base.html' %}
+{% load crispy_forms_tags %} {# only works if crispy is installed; safe to ignore otherwise #}
+{% block title %}Contact (ModelForm){% endblock %}
+
+{% block content %}
+<h2>Contact Us (ModelForm)</h2>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  {# If crispy-forms is installed you can render: {{ form|crispy }} #}
+  {{ form.as_p }}
+  <button class="btn btn-success">Send (ModelForm)</button>
+</form>
+{% endblock %}
